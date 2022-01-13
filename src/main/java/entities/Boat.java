@@ -40,6 +40,13 @@ public class Boat implements Serializable {
         this.auction = auction;
     }
 
+    public Boat(String name, String brand, String make, int year, String image) {
+        this.name = name;
+        this.brand = brand;
+        this.make = make;
+        this.year = year;
+        this.image = image;
+    }
 
     public void addOwner(Owner owner){
         owners.add(owner);

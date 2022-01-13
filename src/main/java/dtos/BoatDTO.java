@@ -39,4 +39,35 @@ public class BoatDTO {
         return boatDTO;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public List<OwnerDTO> getOwnerDTOs() {
+        return ownerDTOs;
+    }
+
+    public AuctionDTO getAuctionDTO() {
+        return auctionDTO;
+    }
 }

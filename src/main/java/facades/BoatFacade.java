@@ -21,7 +21,6 @@ public class BoatFacade {
     private static BoatFacade instance;
     private static EntityManagerFactory emf;
 
-    //Private Constructor to ensure Singleton
     private BoatFacade() {}
     
 
@@ -71,16 +70,6 @@ public class BoatFacade {
         }
     }
 
-
-    public RenameMeDTO findBoat(long id) { //throws RenameMeNotFoundException {
-        EntityManager em = emf.createEntityManager();
-        RenameMe rm = em.find(RenameMe.class, id);
-//        if (rm == null)
-//            throw new RenameMeNotFoundException("The RenameMe entity with ID: "+id+" Was not found");
-        return new RenameMeDTO(rm);
-    }
-
-
     
     public List<BoatDTO> getUserBoats(String name){
         EntityManager em = emf.createEntityManager();
@@ -97,10 +86,12 @@ public class BoatFacade {
             throw new WebApplicationException(e.getMessage(), 404);
         }
     }
-    
-    public static void main(String[] args) {
-        emf = EMF_Creator.createEntityManagerFactory();
-        BoatFacade fe = getFacade(emf);
+
+    public List<BoatDTO> getAllBoats(){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery query = em.createQuery("select b from Boat b", Boat.class);
+        return BoatDTO.getBoatDTO(query.getResultList());
     }
+
 
 }
