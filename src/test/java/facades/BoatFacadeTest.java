@@ -28,6 +28,15 @@ public class BoatFacadeTest {
     public static void setUpClass() {
        emf = EMF_Creator.createEntityManagerFactoryForTest();
        facade = BoatFacade.getFacade(emf);
+
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.createNamedQuery("Boat.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Auction.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Owner.deleteAllRows").executeUpdate();
+        em.createNamedQuery("User.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Role.deleteAllRows").executeUpdate();
+        em.getTransaction().commit();
     }
 
     @AfterAll

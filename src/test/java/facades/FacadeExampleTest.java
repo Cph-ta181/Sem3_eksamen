@@ -51,7 +51,14 @@ public class FacadeExampleTest {
 
     @AfterEach
     public void tearDown() {
-//        Remove any data after each test was run
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.createNamedQuery("Boat.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Auction.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Owner.deleteAllRows").executeUpdate();
+        em.createNamedQuery("User.deleteAllRows").executeUpdate();
+        em.createNamedQuery("Role.deleteAllRows").executeUpdate();
+        em.getTransaction().commit();
     }
 
     // TODO: Delete or change this method 

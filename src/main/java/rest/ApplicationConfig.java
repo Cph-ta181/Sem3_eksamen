@@ -34,6 +34,7 @@ public class ApplicationConfig extends Application {
         resources.add(rest.OwnerResource.class);
         resources.add(rest.BoatResource.class);
         resources.add(rest.AuctionResource.class);
+        resources.add(rest.UserResource.class);
     }
     
 }

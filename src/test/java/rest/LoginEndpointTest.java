@@ -1,5 +1,6 @@
 package rest;
 
+import com.nimbusds.jose.shaded.json.JSONUtil;
 import entities.User;
 import entities.Role;
 
@@ -26,7 +27,7 @@ import utils.EMF_Creator;
 public class LoginEndpointTest {
 
     private static final int SERVER_PORT = 7777;
-    private static final String SERVER_URL = "http://localhost/api";
+    private static final String SERVER_URL = "http://localhost/devops_starter_war_exploded/api";
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -52,9 +53,7 @@ public class LoginEndpointTest {
 
     @AfterAll
     public static void closeTestServer() {
-        //Don't forget this, if you called its counterpart in @BeforeAll
         EMF_Creator.endREST_TestWithDB();
-        
         httpServer.shutdownNow();
     }
 
@@ -103,7 +102,7 @@ public class LoginEndpointTest {
                 .when().post("/login")
                 .then()
                 .extract().path("token");
-        //System.out.println("TOKEN ---> " + securityToken);
+        System.out.println("TOKEN ---> " + securityToken);
     }
 
     private void logOut() {
