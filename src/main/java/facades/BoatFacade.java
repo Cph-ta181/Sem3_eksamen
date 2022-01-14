@@ -13,7 +13,9 @@ import utils.EMF_Creator;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import javax.validation.OverridesAttribute;
 import javax.ws.rs.WebApplicationException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BoatFacade {
@@ -63,7 +65,7 @@ public class BoatFacade {
                 em.getTransaction().begin();
                 em.remove(boat);
                 em.getTransaction().commit();
-                return "Boat with id: " + id + " was successfully removed!";
+                return "{msg: Boat with id: " + id + " was successfully removed!}";
             }
         } catch (NotFoundException e){
             throw new WebApplicationException(e.getMessage(), 404);
@@ -85,6 +87,23 @@ public class BoatFacade {
         catch (NotFoundException e){
             throw new WebApplicationException(e.getMessage(), 404);
         }
+    }
+
+    public BoatDTO updateBoat(BoatDTO boatDTO){
+        EntityManager em = emf.createEntityManager();
+        Boat boat = em.find(Boat.class, boatDTO.getId());
+
+        em.getTransaction().begin();
+        boat.setName(boatDTO.getName());
+        boat.setBrand(boatDTO.getBrand());
+        boat.setMake(boatDTO.getMake());
+        boat.setYear(boatDTO.getYear());
+        boat.setImage(boatDTO.getImage());
+        em.getTransaction().commit();
+
+        List<Boat> boats = new ArrayList<>();
+        boats.add(boat);
+        return BoatDTO.getBoatDTO(boats).get(0);
     }
 
     public List<BoatDTO> getAllBoats(){

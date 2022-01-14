@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.BoatDTO;
 import entities.Boat;
 import facades.BoatFacade;
 import facades.OwnerFacade;
@@ -52,6 +53,15 @@ public class BoatResource {
     @RolesAllowed("admin")
     public String addNewBoat(@PathParam("id") Long id) {
         return FACADE.deleteBoat(id);
+    }
+
+    @Path("/updateboat")
+    @PUT
+    @Produces({MediaType.APPLICATION_JSON})
+    @RolesAllowed("user")
+    public String updateBoat(String string){
+        BoatDTO boatDTO = gson.fromJson(string, BoatDTO.class);
+        return gson.toJson(FACADE.updateBoat(boatDTO));
     }
 
 }
