@@ -113,5 +113,22 @@ public class BoatFacade {
         return BoatDTO.getBoatDTO(query.getResultList());
     }
 
+    public List<BoatDTO> getAcutionBoats(Long id){
+        EntityManager em = emf.createEntityManager();
+        try{
+
+            TypedQuery query = em.createQuery("select b from Boat b join Auction on b.auction = :id", Boat.class);
+            query.setParameter("id", id);
+            List<BoatDTO> boats = BoatDTO.getBoatDTO(query.getResultList());
+            if (boats != null){
+                return boats;
+            }else {
+                throw new NotFoundException("Either this auction does not exist or no boats are added yet");
+            }
+        } catch (NotFoundException e ){
+            throw new WebApplicationException(e.getMessage(), 404);
+        }
+    }
+
 
 }

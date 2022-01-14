@@ -72,5 +72,14 @@ public class BoatResource {
         return gson.toJson(FACADE.getAllBoats());
     }
 
+
+    @Path("/auctionboats/{id}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @RolesAllowed({"user", "admin"})
+    public String getAuctionBoats(@PathParam("id") Long id) {
+        return gson.toJson(FACADE.getAcutionBoats(id));
+    }
+
 }
 
