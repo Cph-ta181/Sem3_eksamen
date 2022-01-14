@@ -117,7 +117,7 @@ public class BoatFacade {
         EntityManager em = emf.createEntityManager();
         try{
 
-            TypedQuery query = em.createQuery("select b from Boat b join Auction on b.auction = :id", Boat.class);
+            TypedQuery query = em.createQuery("select b from Boat b join Auction a on a.id = :id", Boat.class);
             query.setParameter("id", id);
             List<BoatDTO> boats = BoatDTO.getBoatDTO(query.getResultList());
             if (boats != null){
