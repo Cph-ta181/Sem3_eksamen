@@ -64,5 +64,13 @@ public class BoatResource {
         return gson.toJson(FACADE.updateBoat(boatDTO));
     }
 
+    @Path("/all")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    @RolesAllowed("admin")
+    public String getAllBoats() {
+        return gson.toJson(FACADE.getAllBoats());
+    }
+
 }
 

@@ -106,6 +106,7 @@ public class BoatFacade {
         return BoatDTO.getBoatDTO(boats).get(0);
     }
 
+
     public List<BoatDTO> getAllBoats(){
         EntityManager em = emf.createEntityManager();
         TypedQuery query = em.createQuery("select b from Boat b", Boat.class);

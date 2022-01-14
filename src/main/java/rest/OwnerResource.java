@@ -29,6 +29,7 @@ public class OwnerResource {
     public String getAllOwners() {
         return GSON.toJson(FACADE.getAllOwners());
     }
+
     @Path("/owning/{id}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})

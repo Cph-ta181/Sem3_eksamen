@@ -1,11 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Change or remove this page</h1>
-        <h2>Jeps!!!</h2>
-    </body>
-</html>
+<head>
+    <title>Start Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+
+<div style="text-align: center"><h1>(Incomplete) Documentation</h1></div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Method</th>
+        <th scope="col">URL</th>
+        <th scope="col">Request Body (JSON)</th>
+        <th scope="col">Response (JSON)</th>
+        <th scope="col">Error</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">GET</th>
+        <td colspan = "2">/api/boats/userboats</td>
+        <td>[boat, boat, ..]</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">POST</th>
+        <td>/api/boat/addnewtoauc/{id}</td>
+        <td>boat</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">DELETE</th>
+        <td colspan = "2">/api/boat/remove/{id}</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">PUT</th>
+        <td>/api/boat/updateboat</td>
+        <td>boat</td>
+        <td>boat</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">GET</th>
+        <td colspan="2">/api/auction/all</td>
+        <td>[auction, auction ...]</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">GET</th>
+        <td>/api/owner/all</td>
+        <td></td>
+        <td>[owner, owner...]]</td>
+        <td></td>
+    </tr>
+    <tr>
+        <th scope="row">GET</th>
+        <td>/api/owner/owning/{id}</td>
+        <td></td>
+        <td>[owner, owner...]</td>
+        <td></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<pre style="word-wrap: break-word; white-space: pre-wrap;">
+</pre>
